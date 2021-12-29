@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 import 'dart:io';
@@ -136,6 +135,7 @@ final handles = <String, Handler>{
   "/search/multimatch": search_multimatch,
   "/search/suggest": search_suggest,
   "/search": search,
+  "/search/cloud": cloud_search,
   "/simi/artist": simi_artist,
   "/simi/mv": simi_mv,
   "/simi/playlist": simi_playlist,
