@@ -57,6 +57,7 @@ final handles = <String, Handler>{
   "/artist/sub": artist_sub,
   "/artist/sublist": artist_sublist,
   "/artists": artists,
+  "/artist/detail": artist_detail,
   "/banner": banner,
   "/batch": batch,
   "/captch/register": captch_register,
