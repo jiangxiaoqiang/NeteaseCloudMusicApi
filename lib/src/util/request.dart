@@ -5,7 +5,6 @@ import 'dart:math';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:netease_music_api/netease_cloud_music.dart';
-import 'package:netease_music_api/src/answer.dart';
 
 import 'crypto.dart';
 
@@ -44,10 +43,12 @@ String _chooseUserAgent({String? ua}) {
 Map<String, String> _buildHeader(
     String url, String? ua, String method, List<Cookie> cookies) {
   final headers = {'User-Agent': _chooseUserAgent(ua: ua)};
-  if (method.toUpperCase() == 'POST')
+  if (method.toUpperCase() == 'POST') {
     headers['Content-Type'] = 'application/x-www-form-urlencoded';
-  if (url.contains('music.163.com'))
+  }
+  if (url.contains('music.163.com')) {
     headers['Referer'] = 'https://music.163.com';
+  }
   headers['Cookie'] = cookies.join("; ");
   return headers;
 }
@@ -62,11 +63,7 @@ Future<Answer> eapiRequest(
 }) {
   final headers = _buildHeader(url, ua, method, cookies);
 
-  final cookie = Map.fromIterable(
-    cookies,
-    key: (item) => item.name,
-    value: (item) => item.value,
-  );
+  final cookie = {for (var item in cookies) item.name: item.value};
   final csrfToken = cookie['__csrf'] ?? '';
   final header = {
     //系统版本
@@ -126,7 +123,7 @@ Future<Answer> eapiRequest(
         status: ans.status > 100 && ans.status < 600 ? ans.status : 400);
     return ans;
   }).catchError((e, s) {
-    debugPrint("request error " + e.toString());
+    debugPrint("request error $e");
     debugPrint(s.toString());
     return Answer(status: 502, body: {'code': 502, 'msg': e.toString()});
   });

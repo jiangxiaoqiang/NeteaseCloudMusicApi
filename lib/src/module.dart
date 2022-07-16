@@ -19,7 +19,7 @@ part 'module/captch.dart';
 part 'module/check_music.dart';
 part 'module/comment.dart';
 part 'module/daily_signin.dart';
-part 'module/digitalAlbum_purchased.dart';
+part 'module/digital_album_purchased.dart';
 part 'module/dj.dart';
 part 'module/event.dart';
 part 'module/fm.dart';

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:netease_music_api/netease_cloud_music.dart';
-import 'package:netease_music_api/src/answer.dart';
 
 main(List<String> arguments) {
   _startServer(port: 3001);

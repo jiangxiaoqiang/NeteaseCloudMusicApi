@@ -49,7 +49,7 @@ Map eapi(String url, Map obj) {
   final text = json.encode(obj);
   final message = 'nobody${url}use${text}md5forencrypt';
   final digest = md5.convert(utf8.encode(message));
-  final data = '${url}-36cd479b6b5-${text}-36cd479b6b5-${digest}';
+  final data = '$url-36cd479b6b5-$text-36cd479b6b5-$digest';
   return {
     'params': _aesEncrypt(data, AESMode.ecb, _eapiKey, IV.fromUtf8(''))
         .base16
@@ -89,7 +89,7 @@ Encrypted rsaEncrypt(String text, String key) {
 }
 
 String _reverse(String content) {
-  StringBuffer buffer = new StringBuffer();
+  StringBuffer buffer = StringBuffer();
   for (int i = content.length - 1; i >= 0; i--) {
     buffer.write(content[i]);
   }

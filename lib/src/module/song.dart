@@ -11,7 +11,7 @@ Handler song_detail = (query, cookie) {
       'POST',
       'https://music.163.com/weapi/v3/song/detail',
       {
-        'c': '[${ids.map((id) => ('{"id": ${id}}')).join(',')}]',
+        'c': '[${ids.map((id) => ('{"id": $id}')).join(',')}]',
       },
       crypto: Crypto.weapi,
       cookies: cookie);

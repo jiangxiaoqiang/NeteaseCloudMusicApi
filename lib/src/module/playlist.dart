@@ -76,7 +76,7 @@ Handler playlist_tracks = (query, cookie) {
       {
         'op': query!['op'], // del,add
         'pid': query['pid'], // 歌单id
-        'trackIds': '[' + query['tracks'] + ']' // 歌曲id
+        'trackIds': '[${query['tracks']}]' // 歌曲id
       },
       crypto: Crypto.weapi,
       cookies: cookie);

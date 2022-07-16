@@ -168,9 +168,11 @@ Handler comment = (query, cookies) {
     data['threadId'] = query['threadId'];
   }
 
-  if (query['t'] == 'add')
+  if (query['t'] == 'add') {
     data['content'] = query['content'];
-  else if (query['t'] == 'delete') data['commentId'] = query['commentId'];
+  } else if (query['t'] == 'delete') {
+    data['commentId'] = query['commentId'];
+  }
   return request('POST',
       'https://music.163.com/weapi/resource/comments/${query['t']}', data,
       crypto: Crypto.weapi, cookies: cookies);
