@@ -3,6 +3,7 @@ part of '../module.dart';
 //手机登录
 Handler login_cellphone = (query, cookie) {
   cookie.add(Cookie('os', 'pc'));
+  cookie.add(Cookie('appver', '2.9.7'));
   final data = {
     'phone': query!['phone'],
     'countrycode': query['countrycode'],
@@ -12,7 +13,7 @@ Handler login_cellphone = (query, cookie) {
     'rememberLogin': 'true'
   };
 
-  return request('POST', 'https://music.163.com/weapi/login/cellphone', data,
+  return request('POST', 'https://music.163.com/api/login/cellphone', data,
       crypto: Crypto.weapi, cookies: cookie, ua: 'pc');
 };
 
