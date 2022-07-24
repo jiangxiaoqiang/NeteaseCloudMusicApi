@@ -72,7 +72,7 @@ Handler playlist_subscribers = (query, cookie) {
 Handler playlist_tracks = (query, cookie) {
   return request(
       'POST',
-      'https://music.163.com/weapi/playlist/subscribers',
+      'https://music.163.com/weapi/playlist/manipulate/tracks',
       {
         'op': query!['op'], // del,add
         'pid': query['pid'], // 歌单id
