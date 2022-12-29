@@ -138,6 +138,7 @@ Future<Answer> request(
   String? ua,
   Crypto crypto = Crypto.weapi,
 }) async {
+  data = Map.from(data);
   final headers = _buildHeader(url, ua, method, cookies);
   if (crypto == Crypto.weapi) {
     var csrfToken = cookies.firstWhereOrNull((c) => c.name == "__csrf");

@@ -11,7 +11,7 @@ Handler login_cellphone = (query, cookie) {
     'rememberLogin': 'true'
   };
 
-  return request('POST', 'https://music.163.com/api/login/cellphone', data, crypto: Crypto.weapi, cookies: cookie, ua: 'pc');
+  return request('POST', 'https://music.163.com/weapi/login/cellphone', data, crypto: Crypto.weapi, cookies: cookie, ua: 'pc');
 };
 
 // 登录刷新
@@ -56,6 +56,41 @@ Handler activate_init_profile = (query, cookie) {
     'http://music.163.com/eapi/activate/initProfile',
     '/api/activate/initProfile',
     data,
+    cookies: cookie,
+  );
+};
+
+Handler login_qr_key = (query, cookie) {
+  const data = {'type': 1};
+  return request(
+    'POST',
+    'https://music.163.com/weapi/login/qrcode/unikey',
+    data,
+    cookies: cookie,
+    crypto: Crypto.weapi,
+  );
+};
+
+Handler login_qr_check = (query, cookie) {
+  final data = {
+    'key': query!['key'],
+    'type': 1,
+  };
+  return request(
+    'POST',
+    'https://music.163.com/weapi/login/qrcode/client/login',
+    data,
+    cookies: cookie,
+    crypto: Crypto.weapi,
+  );
+};
+
+Handler login_status = (query, cookie) {
+  return request(
+    'POST',
+    'https://music.163.com/weapi/w/nuser/account/get',
+    {},
+    crypto: Crypto.weapi,
     cookies: cookie,
   );
 };
